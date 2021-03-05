@@ -1,12 +1,26 @@
-﻿using System;
+﻿using Pty.Network.Services;
+using System;
+using System.Threading;
 
 namespace ServerApp
 {
     class Program
     {
+        static ServerObject server;
+        static Thread listenThread;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                server = new ServerObject();
+                listenThread = new Thread(new ThreadStart(server.Listen));
+                listenThread.Start();
+            }
+            catch (Exception ex)
+            {
+                server.Disconnect();
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

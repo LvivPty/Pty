@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pty.Network.Core
+namespace Pty.Network.Models.Commands
 {
-    public interface ICommand
+    public class PingModel: BaseModel
     {
-        
     }
 }
